@@ -33,7 +33,7 @@ public class OI {
     /** Buttons on the operator controller */
     private static class OperatorButtons {
         /** Button used as example */
-        private static final Button EXAMPLE = XboxController.Button.kA;
+        private static final Button SHOOT_BUTTON = XboxController.Button.kY;
     }
 
     // This contains objects for both joystick and controller driving
@@ -53,8 +53,12 @@ public class OI {
     private static final XboxController operatorController = new XboxController(Ports.OPERATOR_CONTROLLER);
 
     /** Button used as example */
-    public static final JoystickButton exampleButton = new JoystickButton(operatorController, OperatorButtons.EXAMPLE.value);
+    public static final JoystickButton shooting = new JoystickButton(operatorController, OperatorButtons.SHOOT_BUTTON.value);
 
+    public static DoubleSupplier shootSupplier = ()-> {
+        double raw = 0.5;
+        return raw; 
+    };
 
     // Suppliers for drive inputs
 

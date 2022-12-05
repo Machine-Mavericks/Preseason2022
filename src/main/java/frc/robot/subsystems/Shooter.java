@@ -13,6 +13,8 @@ public class Shooter extends SubsystemBase {
 
   TalonSRX shootMot;
 
+  
+
 
   /** Creates a new Shooter. */
   public Shooter(TalonSRX shootMot) {
