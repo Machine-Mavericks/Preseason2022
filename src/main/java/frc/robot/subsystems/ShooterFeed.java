@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class ShooterFeed extends SubsystemBase {
   TalonSRX feedMot;
+  
   /** Creates a new ShooterFeed. */
   public ShooterFeed(TalonSRX feedMot) {
     this.feedMot =feedMot;

@@ -60,6 +60,11 @@ public class OI {
         return raw; 
     };
 
+    public static DoubleSupplier feedSupplier = () -> {
+        double raw = 0.1;
+        return raw;
+    };
+
     // Suppliers for drive inputs
 
     /**

@@ -12,6 +12,7 @@ import frc.robot.commands.DriveCommand;
 import frc.robot.commands.instant.ExampleButtonCommand;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Shooter;
+import frc.robot.subsystems.ShooterFeed;
 
 /**
  * This class is where the bulk of the robot should be declared. Since
@@ -26,7 +27,9 @@ public class RobotContainer {
 
   /** Instance of the robot's drivetrain */
   private Drivetrain drivetrain = new Drivetrain(RobotMap.leftLeadTalon, RobotMap.rightLeadTalon);
+  //might change later
   private Shooter shooter = new Shooter(RobotMap.topTalon1);
+  private ShooterFeed feed = new ShooterFeed(RobotMap.topTalon2);
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
    */
@@ -53,7 +56,7 @@ public class RobotContainer {
  
 
     // TODO: Add your button bindings here
-    OI.shooting.whenPressed(new CommandLaunch(shooter, OI.shootSupplier));
+    OI.shooting.whenPressed(new CommandLaunch(shooter, OI.shootSupplier, feed, OI.feedSupplier));
   }
 
   /**
