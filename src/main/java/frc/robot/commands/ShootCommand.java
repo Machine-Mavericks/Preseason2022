@@ -9,8 +9,8 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Shooter;
 
 public class ShootCommand extends CommandBase {
-  double IDLESPEED = 0.2;
-  double SHOOTERSPEED = 0.5;
+  double IDLESPEED = 0.4;
+  double SHOOTERSPEED = 0.85;
   Shooter shooter;
   long dTime;
 

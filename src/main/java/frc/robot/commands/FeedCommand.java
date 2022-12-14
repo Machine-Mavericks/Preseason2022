@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Feeder;
 
 public class FeedCommand extends CommandBase {
-  double FEEDSPEED = 0.5;
+  double FEEDSPEED = 0.85;
   Feeder feeder;
   long dTime;
 
