@@ -19,7 +19,11 @@ public class CommandLaunch extends CommandBase {
 
   DoubleSupplier feedSpeedDoubleSupplier;
 
-  Long delay;
+  Long feedDelay;
+
+  Long shootDelay;
+
+  boolean endShooting;
 
   /** Creates a new CommandLaunch. */
   public CommandLaunch(Shooter shooter, DoubleSupplier shootSpeedSupplier, ShooterFeed feed, DoubleSupplier feedSpeedSupplier) {
@@ -38,7 +42,9 @@ public class CommandLaunch extends CommandBase {
   public void initialize() {
     shooter.stopShoot();
 
-    delay = System.currentTimeMillis() + 500; //five hundred means half a second
+    feedDelay = System.currentTimeMillis() + 500;
+    
+    shootDelay = System.currentTimeMillis() + 6000;//five hundred means half a second
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -47,14 +53,20 @@ public class CommandLaunch extends CommandBase {
     /* Get the motors moving for the shooter
     short break before 
     Get the feed motor moving */
-    shooter.setSpeed(shootSpeedSupplier.getAsDouble());
+    if(System.currentTimeMillis() < shootDelay){
 
-    if (System.currentTimeMillis() > delay){
-      
-      feed.setSpeed(feedSpeedDoubleSupplier.getAsDouble());
+      shooter.setSpeed(shootSpeedSupplier.getAsDouble());
 
+      if (System.currentTimeMillis() < feedDelay){
+        
+        feed.setSpeed(feedSpeedDoubleSupplier.getAsDouble());
+  
+        endShooting = false;
+      } 
+  
+    }else{
+      endShooting = true;
     }
-
   }
 
   // Called once the command ends or is interrupted.
@@ -71,6 +83,6 @@ public class CommandLaunch extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return endShooting;
   }
 }
