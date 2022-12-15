@@ -2,6 +2,10 @@ package frc.robot;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
+import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
+import edu.wpi.first.wpilibj.motorcontrol.PWMMotorController;
+import edu.wpi.first.wpilibj.motorcontrol.VictorSP;
+
 // Imports for optional hardware
 // import edu.wpi.first.wpilibj.AnalogInput;
 // import edu.wpi.first.wpilibj.DigitalInput;
@@ -16,16 +20,6 @@ public class RobotMap {
      * Inner class to hold CAN ID constants.
      */
     private static class CAN {
-        /** CAN ID of left talon 1. */
-        private static final int LEFT_TALON_1 = 2;
-        /** CAN ID of left talon 2. */
-        private static final int LEFT_TALON_2 = 3;
-        
-        /** CAN ID of right talon 1. */
-        private static final int RIGHT_TALON_1 = 4;
-        /** CAN ID of right talon 2. */
-        private static final int RIGHT_TALON_2 = 5;
-
         /** CAN ID of top talon 1. */
         private static final int TOP_TALON_1 = 6;
         /** CAN ID of top talon 2. */
@@ -45,19 +39,33 @@ public class RobotMap {
 
         /** Pin of Analog Input connection 1 */
         private static final int ANALOG_1 = 0;
+        
+        /** CAN ID of left talon 1. */
+        private static final int LEFT_CONTROLLER_1 = 0;
+        /** CAN ID of left talon 2. */
+        private static final int LEFT_CONTROLLER_2 = 1;
+        
+        /** CAN ID of right talon 1. */
+        private static final int RIGHT_CONTROLLER_1 = 2;
+        /** CAN ID of right talon 2. */
+        private static final int RIGHT_CONTROLLER_2 = 3;
     }
 
     // We use the WPILib wrappers to get simulation support
 
-    /** Lead drive Talon on left side */
-    public static final WPI_TalonSRX leftLeadTalon = new WPI_TalonSRX(CAN.LEFT_TALON_1);
-    /** Lead drive Talon on left side */
-    public static final WPI_TalonSRX leftFollowTalon = new WPI_TalonSRX(CAN.LEFT_TALON_2);
+    /** First drive controller on left side */
+    public static final VictorSP leftController1 = new VictorSP(RIO.LEFT_CONTROLLER_1);
+    /** Second drive controller on left side */
+    public static final VictorSP leftController2 = new VictorSP(RIO.LEFT_CONTROLLER_2);
+    /** Group with both left side drive controllers for simplicity */
+    public static final MotorControllerGroup leftDriveControllers = new MotorControllerGroup(leftController1, leftController2);
 
-    /** Lead drive Talon on right side */
-    public static final WPI_TalonSRX rightLeadTalon = new WPI_TalonSRX(CAN.RIGHT_TALON_1);
-    /** Lead drive Talon on right side */
-    public static final WPI_TalonSRX rightFollowTalon = new WPI_TalonSRX(CAN.RIGHT_TALON_2);
+    /** First drive controller on right side */
+    public static final VictorSP rightController1 = new VictorSP(RIO.RIGHT_CONTROLLER_1);
+    /** Second drive controller on right side */
+    public static final VictorSP rightController2 = new VictorSP(RIO.RIGHT_CONTROLLER_2);
+    /** Group with both right side drive controllers for simplicity */
+    public static final MotorControllerGroup rightDriveControllers = new MotorControllerGroup(rightController1, rightController2);
 
     /** Top Talon 1 */
     public static final WPI_TalonSRX topTalon1 = new WPI_TalonSRX(CAN.TOP_TALON_1);
@@ -84,10 +92,6 @@ public class RobotMap {
 
     // Static initializer will be run on first reference to RobotMap
     static {
-        // Configure follower settings
-        leftFollowTalon.follow(leftLeadTalon);
-        rightFollowTalon.follow(rightLeadTalon);
-
         // It's a bit ambiguous what config belongs here vs elsewhere, but a good rule of thumb is that anything that 
         // isn't implicitly part of a motor's name (so PID constants, ramp settings, etc) belong in subsystems
     }
