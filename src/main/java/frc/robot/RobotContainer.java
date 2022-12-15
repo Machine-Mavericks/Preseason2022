@@ -20,7 +20,7 @@ import frc.robot.subsystems.Drivetrain;
 public class RobotContainer {
 
   /** Instance of the robot's drivetrain */
-  private Drivetrain drivetrain = new Drivetrain(RobotMap.leftLeadTalon, RobotMap.rightLeadTalon);
+  private Drivetrain drivetrain = new Drivetrain(RobotMap.leftDriveControllers, RobotMap.rightDriveControllers);
   
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
