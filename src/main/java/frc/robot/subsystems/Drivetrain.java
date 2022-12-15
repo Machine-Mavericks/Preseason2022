@@ -1,9 +1,7 @@
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-
-import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 /**
  * Subsystem representing the Robot's drivetrain.
@@ -11,24 +9,24 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 public class Drivetrain extends SubsystemBase  {
 
 	/**
-	 * Leader Talon on left side.
+	 * Motor controllers on left side.
 	 */
-	TalonSRX leftLead;
+	MotorControllerGroup leftControllers;
 	/**
-	 * Leader Talon on right side.
+	 * Motor controllers on right side.
 	 */
-	TalonSRX rightLead;
+	MotorControllerGroup rightControllers;
 
 
 	/**
 	 * Create a new Drivetrain.
 	 * 
-	 * @param leftLead Leader Talon on left side
-	 * @param rightLead Leader Talon on right side
+	 * @param leftControllers Motor controllers on left side
+	 * @param rightControllers Motor controllers on right side
 	 */
-	public Drivetrain(TalonSRX leftLead, TalonSRX rightLead) {
-		this.leftLead = leftLead;
-		this.rightLead = rightLead;
+	public Drivetrain(MotorControllerGroup leftControllers, MotorControllerGroup rightControllers) {
+		this.leftControllers = leftControllers;
+		this.rightControllers = rightControllers;
 	}
 	
 	/**
@@ -37,16 +35,16 @@ public class Drivetrain extends SubsystemBase  {
 	 * @param right right side output percet, [-1, 1]
 	 */
 	public void setOutput(double left, double right){
-		leftLead.set(ControlMode.PercentOutput, left);
-		rightLead.set(ControlMode.PercentOutput, right);
+		leftControllers.set(-left);
+		rightControllers.set(right);
 	}
 
 	/**
 	 * Stop the drivetrain.
 	 */
 	public void stop(){
-		leftLead.set(ControlMode.PercentOutput, 0);
-		rightLead.set(ControlMode.PercentOutput, 0);
+		leftControllers.set(0);
+		rightControllers.set(0);
 	}
 
 }
