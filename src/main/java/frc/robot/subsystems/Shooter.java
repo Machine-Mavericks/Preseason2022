@@ -11,6 +11,9 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Shooter extends SubsystemBase {
   
+  //TODO: Calibrate  
+  public static final double SHOOT_SPEED = 0.75;
+
   private TalonSRX shooterMotor;
   
   /** Creates a new Shooter. */

@@ -11,6 +11,9 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Feeder extends SubsystemBase {
 
+  // TODO: Calibrate
+  public static final double FEED_SPEED = 0.75;
+
     private TalonSRX feederMotor;
 
 
