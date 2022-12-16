@@ -5,17 +5,16 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-
 import frc.robot.subsystems.Shooter;
 
-public class ShootCommand extends CommandBase {
+public class LowShootCommand extends CommandBase {
   double IDLESPEED = 0.4;
-  double SHOOTERSPEED = 0.96;
+  double SHOOTERSPEED = 0.56;
   Shooter shooter;
   long dTime;
 
   /** Creates a new ShootCommand. */
-  public ShootCommand(Shooter shooter) {
+  public LowShootCommand(Shooter shooter) {
     addRequirements(shooter);
     this.shooter = shooter;
     // Use addRequirements() here to declare subsystem dependencies.

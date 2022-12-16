@@ -11,6 +11,7 @@ import frc.robot.commands.DriveCommand;
 import frc.robot.commands.instant.ExampleButtonCommand;
 import frc.robot.commands.FeedCommand;
 import frc.robot.commands.ShootCommand;
+import frc.robot.commands.LowShootCommand;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Shooter;
 import frc.robot.subsystems.Feeder;
@@ -52,6 +53,7 @@ public class RobotContainer {
     //OI.exampleButton.whenPressed(new ExampleButtonCommand());
     OI.shootButton.whenPressed(new ShootCommand(shooter));
     OI.feedButton.whenPressed(new FeedCommand(feeder));
+    OI.lowButton.whenPressed(new LowShootCommand(shooter));
     
     // TODO: Add your button bindings here    
   }

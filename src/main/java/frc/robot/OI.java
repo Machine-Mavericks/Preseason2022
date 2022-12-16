@@ -33,8 +33,9 @@ public class OI {
     /** Buttons on the operator controller */
     private static class OperatorButtons {
         /** Button used as example */
-        private static final Button shoot = XboxController.Button.kY;
-        private static final Button feed = XboxController.Button.kX;
+        private static final Button shoot = XboxController.Button.kLeftBumper;
+        private static final Button feed = XboxController.Button.kB;
+        private static final Button low = XboxController.Button.kRightBumper;
     }
 
     // This contains objects for both joystick and controller driving
@@ -56,6 +57,7 @@ public class OI {
     /** Button used as example */
     public static final JoystickButton shootButton = new JoystickButton(operatorController, OperatorButtons.shoot.value);
     public static final JoystickButton feedButton = new JoystickButton(operatorController, OperatorButtons.feed.value);
+    public static final JoystickButton lowButton = new JoystickButton(operatorController, OperatorButtons.low.value);
 
 
     // Suppliers for drive inputs
