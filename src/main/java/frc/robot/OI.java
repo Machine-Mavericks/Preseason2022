@@ -34,6 +34,11 @@ public class OI {
     private static class OperatorButtons {
         /** Button used as example */
         private static final Button EXAMPLE = XboxController.Button.kA;
+
+        /** Button used to drive shooter wheel */
+        private static final Button SHOOT_BUTTON = XboxController.Button.kLeftBumper;
+        /** Button used to drive feeder wheel */
+        private static final Button FEED_BUTTON = XboxController.Button.kX;
     }
 
     // This contains objects for both joystick and controller driving
@@ -55,6 +60,10 @@ public class OI {
     /** Button used as example */
     public static final JoystickButton exampleButton = new JoystickButton(operatorController, OperatorButtons.EXAMPLE.value);
 
+    /** Button used to drive shooter wheel */
+    public static final JoystickButton shootButton = new JoystickButton(operatorController, OperatorButtons.SHOOT_BUTTON.value);
+    /** Button used to drive feeder wheel */
+    public static final JoystickButton feedButton = new JoystickButton(operatorController, OperatorButtons.FEED_BUTTON.value);
 
     // Suppliers for drive inputs
 
