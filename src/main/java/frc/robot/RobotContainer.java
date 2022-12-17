@@ -25,7 +25,7 @@ import frc.robot.subsystems.Feeder;
 public class RobotContainer {
 
   /** Instance of the robot's drivetrain */
-  private Drivetrain drivetrain = new Drivetrain(RobotMap.leftLeadTalon, RobotMap.rightLeadTalon);
+  private Drivetrain drivetrain = new Drivetrain(RobotMap.leftDriveControllers, RobotMap.rightDriveControllers);
   private Shooter shooter = new Shooter(RobotMap.topTalon1);
   private Feeder feeder = new Feeder(RobotMap.topTalon2);
   
