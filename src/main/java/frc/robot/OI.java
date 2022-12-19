@@ -56,12 +56,12 @@ public class OI {
     public static final JoystickButton shooting = new JoystickButton(operatorController, OperatorButtons.SHOOT_BUTTON.value);
 
     public static DoubleSupplier shootSupplier = ()-> {
-        double raw = 0.5;
+        double raw = 0.4;
         return raw; 
     };
 
     public static DoubleSupplier feedSupplier = () -> {
-        double raw = 0.1;
+        double raw = 1.0;
         return raw;
     };
 
