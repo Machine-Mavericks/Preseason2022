@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.commands.DriveCommand;
 import frc.robot.commands.instant.ExampleButtonCommand;
 import frc.robot.subsystems.Drivetrain;
+import frc.robot.subsystems.GamePieceTargeting;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -21,7 +22,8 @@ public class RobotContainer {
 
   /** Instance of the robot's drivetrain */
   private Drivetrain drivetrain = new Drivetrain(RobotMap.leftDriveControllers, RobotMap.rightDriveControllers);
-  
+  private GamePieceTargeting gamepiecetargeting = new GamePieceTargeting();
+
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure default commands (there's some debate about where this should be done)
