@@ -18,6 +18,7 @@ public class Limelight extends SubsystemBase {
     // subsystem shuffleboard controls
     private GenericEntry m_Pipeline;
     private GenericEntry m_TargetPresent;
+    private GenericEntry m_AprilTagID;
     private GenericEntry m_AngleX;
     private GenericEntry m_AngleY;
     private GenericEntry m_Skew;
@@ -246,6 +247,9 @@ public class Limelight extends SubsystemBase {
     // does camera detect target
     m_TargetPresent = Tab.add("Target Present", false).withPosition(1,0).getEntry();
 
+    // april tag target id
+    m_AprilTagID = Tab.add("AprilTag Target ID", 0).withPosition(2,0).getEntry();
+
     // camera target information
     ShuffleboardLayout l1 = Tab.getLayout("Target", BuiltInLayouts.kList);
     l1.withPosition(2, 0);
@@ -283,6 +287,7 @@ public class Limelight extends SubsystemBase {
     // update camera pipeline and target detected indicator
     m_Pipeline.setDouble(getPipeline());
     m_TargetPresent.setDouble(isTargetPresent());
+    
     
     // update angles to center of target
     m_AngleX.setDouble(getHorizontalTargetOffsetAngle());
