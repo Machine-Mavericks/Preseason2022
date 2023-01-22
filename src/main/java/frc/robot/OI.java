@@ -39,6 +39,10 @@ public class OI {
         private static final Button SHOOT_BUTTON = XboxController.Button.kLeftBumper;
         /** Button used to drive feeder wheel */
         private static final Button FEED_BUTTON = XboxController.Button.kX;
+        /** Button used to balance robot */
+        private static final Button BALANCE_BUTTON = XboxController.Button.kY;
+        private static final Button RESET_BUTTON = XboxController.Button.kB;
+
     }
 
     // This contains objects for both joystick and controller driving
@@ -64,7 +68,9 @@ public class OI {
     public static final JoystickButton shootButton = new JoystickButton(operatorController, OperatorButtons.SHOOT_BUTTON.value);
     /** Button used to drive feeder wheel */
     public static final JoystickButton feedButton = new JoystickButton(operatorController, OperatorButtons.FEED_BUTTON.value);
-
+    /** Button used to balance robot */
+    public static final JoystickButton balanceButton = new JoystickButton(operatorController, OperatorButtons.BALANCE_BUTTON.value);
+    public static final JoystickButton resetButton = new JoystickButton(operatorController, OperatorButtons.RESET_BUTTON.value);
     // Suppliers for drive inputs
 
     /**

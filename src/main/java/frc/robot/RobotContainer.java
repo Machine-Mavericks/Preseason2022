@@ -10,10 +10,13 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.commands.DriveCommand;
 import frc.robot.commands.FeedCommand;
 import frc.robot.commands.ShootCommand;
+import frc.robot.commands.BalanceCommand;
+import frc.robot.commands.ResetGyroCommand;
 import frc.robot.commands.instant.ExampleButtonCommand;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Feeder;
 import frc.robot.subsystems.Shooter;
+import frc.robot.subsystems.Gyro;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -30,6 +33,8 @@ public class RobotContainer {
   private Shooter shooter = new Shooter(RobotMap.topTalon1);
   /** Intance of the robot's feeder */
   private Feeder feeder = new Feeder(RobotMap.topTalon2);
+  /** Instance of the robot's gyro*/
+  private Gyro gyro = new Gyro();
   
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -53,6 +58,8 @@ public class RobotContainer {
     
     OI.shootButton.whileHeld(new ShootCommand(shooter, Shooter.SHOOT_SPEED));
     OI.feedButton.whileHeld(new FeedCommand(feeder, Feeder.FEED_SPEED));
+    OI.balanceButton.whileHeld(new BalanceCommand(gyro, drivetrain));
+    OI.resetButton.whenPressed(new ResetGyroCommand(gyro));
   }
 
   /**

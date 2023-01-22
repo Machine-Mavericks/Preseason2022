@@ -23,6 +23,8 @@ public class Gyro extends SubsystemBase {
   private NetworkTableEntry m_xAcceleration;
   private NetworkTableEntry m_yAcceleration;
   
+  private double error;
+
   // make our gyro object
   private AHRS gyro;
 
@@ -67,6 +69,13 @@ public class Gyro extends SubsystemBase {
     
     // reset our Gyro
     gyro.reset();
+  }
+  public void setZeroValue() {
+    error = gyro.getPitch();
+  }
+  public double getZeroValue() {
+    // reset our Gyro
+    return error;
   }
 
 
