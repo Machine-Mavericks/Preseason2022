@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardLayout;
 import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-public class limelight extends SubsystemBase {
+public class Limelight extends SubsystemBase {
   /** Creates a new limelight. */
 
     // subsystem shuffleboard controls
@@ -38,7 +38,7 @@ public class limelight extends SubsystemBase {
      * Creates a new Limelight.
      * Input: String containing name of limelight (defined in the camera)
      */
-    public limelight(String name) {
+    public Limelight(String name) {
   
       // set initial pipeline to 0
       setPipeline(0);
