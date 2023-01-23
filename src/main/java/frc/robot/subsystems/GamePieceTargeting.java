@@ -10,7 +10,7 @@ public class GamePieceTargeting extends SubsystemBase {
   /** Creates a new GamePeiceTargeting. */
   private Limelight m_gamepiececamera;
   public GamePieceTargeting() {
-    m_gamepiececamera = new Limelight("limelight-gamepeice");
+    m_gamepiececamera = new Limelight("hello");
 
     m_gamepiececamera.setPipeline(0);
   }
