@@ -1,7 +1,5 @@
 package frc.robot;
 
-import java.util.function.DoubleSupplier;
-
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.XboxController.Button;
@@ -39,62 +37,29 @@ public class OI {
     // This contains objects for both joystick and controller driving
     // You will uncomment code below to select the drive type you want
 
+    /** Port for controller used by driver */
+    private static final int DRIVER_CONTROLLER_PORT = 0;
+    /** Port for controller used by operator */
+    private static final int OPERATOR_CONTROLLER_PORT = 1;
+
+    /** Controller used by driver, mapped to {@link #DRIVER_CONTROLLER_PORT} */
+    private static final XboxController driverController = new XboxController(DRIVER_CONTROLLER_PORT);
+    /** Controller used by driver, mapped to {@link #OPERATOR_CONTROLLER_PORT} */
+    private static final XboxController operatorController = new XboxController(OPERATOR_CONTROLLER_PORT);
+
+
     // The sticks/controllers are kept private so that if we want to switch them later, this is the only place needing changes
     // Use buttons and DoubleSuppliers to expose any inputs you want elsewhere
+    public static double getXDriveInput(){
+        return OI.driverController.getLeftX()*0.5;
+    }
 
-    /** Joystick used to control left side of drivetrain */
-    private static final Joystick leftJoystick = new Joystick(Ports.LEFT_STICK);
-    /** Joystick used to control right side of drivetrain */
-    private static final Joystick rightJoystick = new Joystick(Ports.RIGHT_STICK);
-    /** Controller used to control drivetrain */
-    private static final XboxController driverController = new XboxController(Ports.DRIVER_CONTROLLER);
+    public static double getYDriveInput(){
+        return OI.driverController.getLeftY()*0.5;
+    }
 
-    /** Controller used by operator */
-    private static final XboxController operatorController = new XboxController(Ports.OPERATOR_CONTROLLER);
-
-    /** Button used as example */
-    public static final JoystickButton exampleButton = new JoystickButton(operatorController, OperatorButtons.EXAMPLE.value);
-
-
-    // Suppliers for drive inputs
-
-    /**
-     * Callback function used to supply left side drive input
-     * A supplier is used so that changing between joystick and controller only changes this function
-     */
-    public static DoubleSupplier leftDriveSupplier = () -> {
-        double raw = 0;
-        // TODO: Uncomment control type you prefer
-        // raw = leftJoystick.getY();
-        // raw = driverController.getLeftY();
-        return processDriveInput(raw);
-    };
-
-    
-    /**
-     * Callback function used to supply left side drive input
-     * A supplier is used so that changing between joystick and controller only changes this function
-     */
-    public static DoubleSupplier rightDriveSupplier = () -> {
-        double raw = 0;
-        // TODO: Uncomment control type you prefer
-        // raw = rightJoystick.getY();
-        // raw = driverController.getRightY();
-        return processDriveInput(raw);
-    };
-
-    /**
-     * Function to compute drive values from raw inputs
-     * Can be used to apply deadzone, scaling, nonlinearity, etc.
-     * @param raw Raw joystick input
-     * @return Input to feed to drivetrain
-     */
-    private static double processDriveInput(double raw){
-        // TODO: Configure input processing to suit your liking
-        // if(Math.abs(raw) < [DEADZONE]) raw = 0;
-        // raw = Math.pow(raw, [EXPONENT]);
-        // raw *= [INPUT_SCALING];
-        return raw;
+    public static double getRotateDriveInput(){
+        return OI.driverController.getRightX()*0.5;
     }
 
 }

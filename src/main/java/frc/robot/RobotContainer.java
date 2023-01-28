@@ -7,9 +7,11 @@ package frc.robot;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.commands.DriveCommand;
-import frc.robot.commands.instant.ExampleButtonCommand;
-import frc.robot.subsystems.Drivetrain;
+import frc.robot.subsystems.Gyro;
+import frc.robot.subsystems.SwerveDrive;
+import frc.robot.subsystems.SwerveOdometry;
+import frc.robot.commands.ManualDriveCommand;
+
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -19,14 +21,21 @@ import frc.robot.subsystems.Drivetrain;
  */
 public class RobotContainer {
 
-  /** Instance of the robot's drivetrain */
-  private Drivetrain drivetrain = new Drivetrain(RobotMap.leftDriveControllers, RobotMap.rightDriveControllers);
+  // Create instances of robot subsystems
+  public static final Gyro gyro = new Gyro();
+  public static final SwerveDrive swervedrive = new SwerveDrive();
+  public static final SwerveOdometry swerveodometry = new SwerveOdometry(); 
+
   
-  /** The container for the robot. Contains subsystems, OI devices, and commands. */
+  /* Constructor */
   public RobotContainer() {
-    // Configure default commands (there's some debate about where this should be done)
-    // For drivetrain, use a DriveCommand with the suppliers from OI
-    drivetrain.setDefaultCommand(new DriveCommand(drivetrain, OI.leftDriveSupplier, OI.rightDriveSupplier));
+  }
+
+  /** Initialise the container for the robot. Contains subsystems, OI devices, and
+   * commands. */
+  public static void init() {
+    // set swerve drive default command to manual driving mode
+    swervedrive.setDefaultCommand(new ManualDriveCommand());
 
     // Configure the button bindings
     configureButtonBindings();
@@ -38,9 +47,7 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj.Joystick} or {@link XboxController}), and then passing it to a {@link
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
-  private void configureButtonBindings() {
-    // Make the ExampleButtonCommand run each time the example button is pressed
-    OI.exampleButton.whenPressed(new ExampleButtonCommand());
+  private static void configureButtonBindings() {
     
     // TODO: Add your button bindings here    
   }
